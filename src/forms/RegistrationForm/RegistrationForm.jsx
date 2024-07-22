@@ -7,8 +7,7 @@ import styles from "./RegistrationForm.module.css";
 export default function RegistrationForm() {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, actions) => {
-    console.log("RegistrationForm", values);
+  const handleSubmit = (values, { resetForm }) => {
     dispatch(register(values))
       .unwrap()
       .then((data) => {
@@ -18,7 +17,7 @@ export default function RegistrationForm() {
         console.log(error);
       });
 
-    actions.resetForm();
+    resetForm();
   };
 
   const validationSchema = Yup.object().shape({
